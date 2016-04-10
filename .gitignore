@@ -45,3 +45,11 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+*.apk
+bin/classes.dex
+*.class
+*.cache
+bin/res/crunch/drawable-hdpi/ic_launcher.png
+bin/res/crunch/drawable-xhdpi/ic_launcher.png
+bin/resources.ap_
+gen/com/example/bluetoothservice/R.java
