@@ -3,6 +3,7 @@ package com.example.bluetoothservice;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.UUID;
@@ -102,9 +103,18 @@ public class MainActivity extends Activity {
 
 				case RECEIVE:
 					byte[] buffer = (byte[]) msg.obj;
-					String receivesString = buffer.toString();
-					chatData.add(receivesString);
-					adapter.notifyDataSetChanged();
+					String receivesString = null;
+					try {
+						receivesString = new String(buffer,"UTF-8");
+					} catch (UnsupportedEncodingException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					if (receivesString != null) {
+						chatData.add(receivesString);
+						adapter.notifyDataSetChanged();
+					}
+
 					break;
 				}
 				super.handleMessage(msg);
